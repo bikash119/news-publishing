@@ -10,23 +10,6 @@ var concat = require('gulp-concat'); 			//Conactenation
 var lint = require('gulp-eslint'); 				//Lint our JS file as well as JSX 
 
 var config ={
-	port: 9005,
-	devUrl: "http://localhost",
-	paths : {
-		html : './src/*.html',
-		js : 	'./src/**/*.js',
-		mainJS : './src/main.js',
-		css : [
-			'node_modules/bootstrap/dist/css/bootstrap.min.css',
-			'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
-			'node_modules/toastr/toastr.scss'
-			],
-		images: './src/images',
-		dist : './dist'
-	}
-};
-
-var adminConfig ={
 	port: 9006,
 	devUrl: "http://localhost",
 	paths : {
@@ -54,23 +37,9 @@ gulp.task("connect",function(){
 	});
 });
 
-gulp.task("connectAdmin",function(){
-	connect.server({
-		root: ["dist"],
-		port: adminConfig.port,
-		base: adminConfig.devUrl,
-		livereload: true
-	});
-});
-
-gulp.task("open",['connect'],function(){
+gulp.task("admin",['connect'],function(){
 	gulp.src('dist/index.html')
-		.pipe(open({uri:config.devUrl + ":" + config.port +"/"}))
-});
-
-gulp.task("admin",['connectAdmin'],function(){
-	gulp.src('dist/admin.html')
-		.pipe(open({uri:adminConfig.devUrl + ":" + adminConfig.port +"/"}))
+		.pipe(open({uri:config.devUrl + ":"+config.port+"/"}))
 });
 
 gulp.task("html",function(){
@@ -116,4 +85,4 @@ gulp.task("watch",function(){
 });
 
 
-gulp.task("default",['html','js','css','images','lint','admin','watch']);
+gulp.task("default",['admin','html','js','css','images','lint','watch']);
