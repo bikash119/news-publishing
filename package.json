@@ -21,12 +21,12 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.6",
-    "flux": "^2.1.1",
+    "flux": "^2.0.3",
     "history": "^1.17.0",
     "jquery": "^2.2.0",
     "lodash": "^4.0.0",
-    "react": "^0.14.6",
-    "react-router": "^1.0.3",
+    "react": "^0.13.3",
+    "react-router": "^0.13.3",
     "toastr": "^2.1.2"
   }
 }
