@@ -30,7 +30,7 @@ var ArticleStore = assign({},EventEmitter.prototype,{
 	},
 
 	getArticleById(id){
-		return _.find(_articles,{articleId:id});
+		return _.find(_articles,{id:id});
 	}
 
 });
@@ -43,7 +43,7 @@ Dispatcher.register(function(action){
 			break;
 		case ActionTypes.UPDATE_ARTICLE:
 			var existingArticle = _.find(_articles,{id:action.Article.id});
-			var existingArticleIndex = _.indexOf(_article,existingArticle);
+			var existingArticleIndex = _.indexOf(_articles,existingArticle);
 			_articles.splice(existingArticleIndex,1,action.Article);
 			ArticleStore.emitChange();
 			break;

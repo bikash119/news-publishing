@@ -8,5 +8,6 @@ module.exports = keyMirror({
 	UPDATE_ARTICLE: null,
 	DELETE_ARTICLE:null,
 	PUBLISH_ARTICLE:null,
-	UNPUBLISH_ARTICLE:null
+	UNPUBLISH_ARTICLE:null,
+	SEARCH_ARTICLE:null
 });

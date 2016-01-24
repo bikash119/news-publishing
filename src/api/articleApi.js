@@ -6,7 +6,7 @@ var _ = require('lodash');
 
 //This would be performed on the server in a real app. Just stubbing in.
 var _generateId = function(article) {
-	return article.title.toLowerCase() + '-' + article.createdAt;
+	return article.title.toLowerCase();
 };
 
 var _clone = function(item) {

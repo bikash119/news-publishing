@@ -1,0 +1,45 @@
+'use react';
+
+var Dispatcher = require('../dispatcher/appDispatcher');
+var ActionTypes = require('../constants/actionTypes');
+
+var EventEmitter = require('events').EventEmitter;
+var assign = require('object-assign');
+var _ = require('lodash');
+var CHANGE_EVENT = 'change';
+
+var _searchResultArticles = [];
+
+
+var SearchStore = assign({},EventEmitter.prototype,{
+
+	addChangeListener(callback){
+		this.on(CHANGE_EVENT,callback);
+	},
+
+	removeChangeListener(callback){
+		this.removeListener(CHANGE_EVENT,callback);
+	},
+
+	emitChange(){
+		this.emit(CHANGE_EVENT);
+	},
+
+	getSearchResults(searchText){
+		console.log("search for ::"+searchText);
+		return _searchResultArticles;
+	},
+
+});
+
+Dispatcher.register(function(action){
+	switch(action.actionType){
+		case ActionTypes.SEARCH_ARTICLE:
+			SearchStore.emitChange();
+			break;
+		default:
+			//no op
+	}
+});
+
+module.exports = SearchStore;

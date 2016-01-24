@@ -25,8 +25,8 @@ var ArticleList = React.createClass({
 			return(
 				<tr key={article.id}>
 					<td><a href="#" onClick={this.deleteArticle.bind(this,article.id)}>Delete</a></td>
-					<td><Link to="manageArticle" params={{articleId:article.id}}>{article.id}</Link></td>
-					<td>{article.title}</td>
+					<td><Link to="manageArticle" params={{articleId:article.id}}>{article.title}</Link></td>
+					<td>{article.content}</td>
 				</tr>
 			);
 		}

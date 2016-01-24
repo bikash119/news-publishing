@@ -9,7 +9,6 @@ var Home = React.createClass({
 	render(){
 		return(
 				<div className="container">
-					<Header />
 					<div className="jumbotron text-center">
 						<h1> ABC News Administration </h1>
 						<p> ABC News Administration webapp build with React , React Router and Flux.</p>

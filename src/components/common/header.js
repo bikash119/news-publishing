@@ -15,6 +15,7 @@ var Header = React.createClass({
 							<li><Link to="app">Home</Link></li>
 							<li><Link to="about">About</Link></li>
 							<li><Link to="articles">Article</Link></li>
+							<li><Link to="search">Search</Link></li>
 						</ul>
 						<ul className="nav navbar-nav navbar-right">
 							<li className="btn btn-default btn-xs"><Link to="app">Signup</Link></li>
