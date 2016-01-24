@@ -25,8 +25,7 @@ var SearchStore = assign({},EventEmitter.prototype,{
 		this.emit(CHANGE_EVENT);
 	},
 
-	getSearchResults(searchText){
-		console.log("search for ::"+searchText);
+	getSearchResults(){
 		return _searchResultArticles;
 	},
 
@@ -35,6 +34,7 @@ var SearchStore = assign({},EventEmitter.prototype,{
 Dispatcher.register(function(action){
 	switch(action.actionType){
 		case ActionTypes.SEARCH_ARTICLE:
+			_searchResultArticles = action.SearchResult;
 			SearchStore.emitChange();
 			break;
 		default:

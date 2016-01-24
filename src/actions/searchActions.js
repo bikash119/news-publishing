@@ -6,12 +6,13 @@ var ActionTypes = require('../constants/actionTypes');
 
 
 var SearchActions = {
-	searchArticle(searchText){
-		var newArticle = SearchApi.searchArticle(article);
+	searchArticles(searchText){
+		console.log("Searching for ::"+searchText);
+		var searchResult = SearchApi.searchArticles(searchText);
 
 		Dispatcher.dispatch({
 			actionType: ActionTypes.SEARCH_ARTICLE,
-			Article: newArticle
+			SearchResult: searchResult
 		});
 	},
 };

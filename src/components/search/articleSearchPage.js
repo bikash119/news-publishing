@@ -5,6 +5,8 @@ var Router = require('react-router');
 var SearchForm = require('./searchForm');
 var SearchResult = require('./searchResult');
 var SearchStore = require('../../stores/searchStore');
+var SearchActions = require('../../actions/searchActions');
+
 
 var SearchPage = React.createClass({
 
@@ -12,7 +14,7 @@ var SearchPage = React.createClass({
 		return{
 			search:{
 				searchInput:'',
-				searchResult:SearchStore.getSearchResults('')
+				searchResult:SearchStore.getSearchResults()
 			},
 			errors:{}
 		};
@@ -38,11 +40,14 @@ var SearchPage = React.createClass({
 	},
 
 	searchArticle(event){
-		console.log("searching....");
 		event.preventDefault();
 		if(!this.articleSearchIsValid()){
 			return;
 		}
+		SearchActions.searchArticles(this.state.search.searchInput);
+		this.state.search['searchResult']=SearchStore.getSearchResults();
+		return this.setState({search:this.state.search});
+
 	},
 	render(){
 		return(
