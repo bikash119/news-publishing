@@ -18,7 +18,6 @@ var _clone = function(item) {
 
 var ArticleApi = {
 	getAllArticles: function() {
-		console.log(RestConfig.ARTICLES_FETCH_URL);
 		$.ajax({
 			url: RestConfig.ARTICLES_FETCH_URL,
 			dataType: 'json',
@@ -50,9 +49,7 @@ var ArticleApi = {
 	},
 
 	indexArticle:function(id){
-		console.log("Indexing article by id : "+ id);
 		var articleIndexingUrl = RestConfig.ARTICLES_INDEX_URL+id;
-		console.log(articleIndexingUrl);
 		$.ajax({
 			type: "POST",
 			url: articleIndexingUrl,
