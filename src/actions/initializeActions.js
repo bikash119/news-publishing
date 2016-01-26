@@ -9,7 +9,8 @@ var InitializeActions = {
 		Dispatcher.dispatch({
 			actionType:ActionTypes.INITIALIZE,
 			initialData:{
-				articles:ArticleApi.getAllArticles()
+				articles:ArticleApi.getAllArticles(),
+				dataFetchState: "loading",
 			}
 		});
 	}

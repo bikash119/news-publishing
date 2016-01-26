@@ -57,13 +57,11 @@ Dispatcher.register(function(action){
 			_articles = action.initialData.articles;
 			ArticleStore.emitChange();
 			break;
-		case ActionTypes.PUBLISH_ARTICLE:
+		case ActionTypes.ARTICLES_LOADED:
 			_articles = action.initialData.articles;
 			ArticleStore.emitChange();
 			break;
-		case ActionTypes.UNPUBLISH_ARTICLE:
-			_articles = action.initialData.articles;
-			ArticleStore.emitChange();
+		case ActionTypes.ARTICLES_LOAD_FAILED:
 			break;
 		default:
 			//no op

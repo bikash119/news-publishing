@@ -2,6 +2,9 @@
 
 //This file is mocking a web API by hitting hard coded data.
 var articles = require('./articleData').articles;
+var RestConfig = require('../constants/restConfig');
+var Dispatcher = require('../dispatcher/appDispatcher');
+var ActionTypes = require('../constants/actionTypes');
 var _ = require('lodash');
 
 //This would be performed on the server in a real app. Just stubbing in.
@@ -15,7 +18,30 @@ var _clone = function(item) {
 
 var ArticleApi = {
 	getAllArticles: function() {
-		return _clone(articles); 
+		console.log(RestConfig.ARTICLES_FETCH_URL);
+		$.ajax({
+			url: RestConfig.ARTICLES_FETCH_URL,
+			dataType: 'json',
+			cache: false,
+			success: function(data){
+				Dispatcher.dispatch({
+						actionType:ActionTypes.ARTICLES_LOADED,
+						initialData:{
+								articles:data,
+								dataFetchState: "ready",
+						}
+				});
+			},
+			error:function(xhr,status,err){
+				Dispatcher.dispatch({
+						actionType:ActionTypes.ARTICLES_LOAD_FAILED,
+						initialData:{
+								articles:null,
+								dataFetchState: "failed",
+						}
+				});
+			}
+		});
 	},
 
 	getArticleById: function(id) {
