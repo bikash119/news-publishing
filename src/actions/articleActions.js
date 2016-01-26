@@ -27,7 +27,16 @@ var ArticleActions = {
 
 		Dispatcher.dispatch({
 			actionType: ActionTypes.DELETE_ARTICLE,
-			id:id,
+			id:id
+		});
+	},
+
+	indexArticle(id){
+		ArticleApi.indexArticle(id);
+
+		Dispatcher.dispatch({
+			actionType:ActionTypes.INDEX_ARTICLE,
+			id:id
 		});
 	}
 };

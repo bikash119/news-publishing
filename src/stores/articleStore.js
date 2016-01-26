@@ -30,7 +30,7 @@ var ArticleStore = assign({},EventEmitter.prototype,{
 	},
 
 	getArticleById(id){
-		return _.find(_articles,{id:id});
+		return _.find(_articles,{id:parseInt(id)});
 	}
 
 });
@@ -62,6 +62,9 @@ Dispatcher.register(function(action){
 			ArticleStore.emitChange();
 			break;
 		case ActionTypes.ARTICLES_LOAD_FAILED:
+			break;
+		case ActionTypes.INDEX_ARTICLE:
+			console.log( "Indexing article request");
 			break;
 		default:
 			//no op

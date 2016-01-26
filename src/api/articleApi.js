@@ -48,6 +48,24 @@ var ArticleApi = {
 		var article = _.find(articles, {id: id});
 		return _clone(article);
 	},
+
+	indexArticle:function(id){
+		console.log("Indexing article by id : "+ id);
+		var articleIndexingUrl = RestConfig.ARTICLES_INDEX_URL+id;
+		console.log(articleIndexingUrl);
+		$.ajax({
+			type: "POST",
+			url: articleIndexingUrl,
+			dataType: 'json',
+			cache: false,
+			success: function(data){
+
+			},
+			error:function(xhr,status,err){
+
+			}
+		});
+	},
 	
 	saveArticle: function(article) {
 		//pretend an ajax call to web api is made here
