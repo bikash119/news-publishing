@@ -20,16 +20,38 @@ var _clone = function(item) {
 
 var SearchApi = {
 	searchArticles: function(queryString) {
-		$.ajax({
-			url: RestConfig.ARTICLE_SEARCH_URL+"q="+queryString,
-			dataType: 'json',
-			cache: false,
-			success: function(data){
-			},
-			error:function(xhr,status,err){
+		Dispatcher.dispatch({
+			actionType:ActionTypes.SEARCH_ARTICLES,
+			initialData:{
+				articles:[],
+				dataSearchState:'loading'
 			}
 		});
-		return _clone(searchResults); 
+		$.ajax({
+			url: RestConfig.ARTICLE_SEARCH_URL+queryString,
+			dataType: 'json',
+			cache: false,
+			type: "GET",
+			success: function(data){
+				Dispatcher.dispatch({
+					actiontype:ActionTypes.DISPLAY_RESULT,
+					initialData:{
+						articles:data,
+						dataSearchState:'ready'
+					}
+				});
+			},
+			error:function(xhr,status,err){
+				Dispatcher.dispatch({
+					actiontype:ActionTypes.DISPLAY_NO_DATA,
+					initialData:{
+						articles:[],
+						error:err,
+						dataSearchState:'failed'
+					}
+				});
+			}
+		});
 	},
 
 };

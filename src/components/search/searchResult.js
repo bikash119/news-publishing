@@ -28,17 +28,7 @@ var SearchResult = React.createClass({
 		}
 		return(
 				<div>
-					<table className="table">
-						<thead>
-							<th></th>
-							<th>Title</th>
-							<th>Content</th>
-						</thead>
-						<tbody>
-							{this.props.resultArticles.map(createResultRow,this)}
-						</tbody>
-					</table>
-				</div>
+x				</div>
 			);
 	}
 });

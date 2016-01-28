@@ -33,10 +33,16 @@ var SearchStore = assign({},EventEmitter.prototype,{
 
 Dispatcher.register(function(action){
 	switch(action.actionType){
-		case ActionTypes.SEARCH_ARTICLE:
-			_searchResultArticles = action.SearchResult;
+		case ActionTypes.SEARCH_ARTICLES:
+			_searchResultArticles = action.initialData.articles;
 			SearchStore.emitChange();
 			break;
+		case ActionTypes.DISPLAY_RESULT:
+			_searchResultArticles = action.initialData.articles.body.responses;
+			SearchStore.emitChange();
+		case ActionTypes.DISPLAY_NO_DATA:
+			_searchResultArticles = action.initialData.articles;
+			SearchStore.emitChange();
 		default:
 			//no op
 	}

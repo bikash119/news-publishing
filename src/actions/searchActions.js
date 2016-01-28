@@ -9,11 +9,6 @@ var SearchActions = {
 	searchArticles(searchText){
 		console.log("Searching for ::"+searchText);
 		var searchResult = SearchApi.searchArticles(searchText);
-
-		Dispatcher.dispatch({
-			actionType: ActionTypes.SEARCH_ARTICLE,
-			SearchResult: searchResult
-		});
 	},
 };
 
