@@ -40,9 +40,11 @@ Dispatcher.register(function(action){
 		case ActionTypes.DISPLAY_RESULT:
 			_searchResultArticles = action.initialData.articles.body.responses;
 			SearchStore.emitChange();
+			break;
 		case ActionTypes.DISPLAY_NO_DATA:
 			_searchResultArticles = action.initialData.articles;
 			SearchStore.emitChange();
+			break;
 		default:
 			//no op
 	}

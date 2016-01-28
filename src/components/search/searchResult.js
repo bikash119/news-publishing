@@ -12,23 +12,25 @@ var SearchResult = React.createClass({
 
 	componentWillMount(){
 		var searchResults = this.props.resultArticles;
-		if(searchResults){
+		if(!searchResults){
 			this.setState({resultArticles:SearchStore.getSearchResults()});
 		}
 	},
 	render(){
 		console.log("Articles :: "+this.props.resultArticles);
-		function createResultRow(result){
+		function createResultPanel(result){
 			return(
-				<tr key={result.id}>
-					<td><Link to="detailArticle" params={{resultArticleId:result.id}}>{result.title}</Link></td>
-					<td>{result.content}</td>
-				</tr>
+				<div className="panel panel-default" key={result.id}>
+  					<div className="panel-body">
+  						{result.title}  Authored by {result.author}
+  					</div>
+				</div>
 			);
 		}
 		return(
-				<div>
-x				</div>
+				<div className="container">
+					{this.props.resultArticles.map(createResultPanel,this)}
+				</div>
 			);
 	}
 });

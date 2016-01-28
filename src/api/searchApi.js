@@ -34,7 +34,7 @@ var SearchApi = {
 			type: "GET",
 			success: function(data){
 				Dispatcher.dispatch({
-					actiontype:ActionTypes.DISPLAY_RESULT,
+					actionType:ActionTypes.DISPLAY_RESULT,
 					initialData:{
 						articles:data,
 						dataSearchState:'ready'
@@ -43,7 +43,7 @@ var SearchApi = {
 			},
 			error:function(xhr,status,err){
 				Dispatcher.dispatch({
-					actiontype:ActionTypes.DISPLAY_NO_DATA,
+					actionType:ActionTypes.DISPLAY_NO_DATA,
 					initialData:{
 						articles:[],
 						error:err,

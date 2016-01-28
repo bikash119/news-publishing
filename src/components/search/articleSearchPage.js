@@ -20,6 +20,19 @@ var SearchPage = React.createClass({
 		};
 	},
 
+	_onChange() {
+		this.state.search['searchResult'] = SearchStore.getSearchResults();
+		this.setState({search: this.state.search});
+	},
+
+	componentWillMount(){
+		SearchStore.addChangeListener(this._onChange);
+	},
+
+	componentWillUnMount(){
+		SearchStore.removeChangeListener(this._onChange);
+	},
+
 	articleSearchIsValid(){
 		var formIsValid = true;
 		this.state.errors = {}; //Clear any previous errors
