@@ -21,9 +21,13 @@ var SearchResult = React.createClass({
 		function createResultPanel(result){
 			return(
 				<div className="panel panel-default" key={result.id}>
+					<div className="panel-heading panel-primary">
+						<h3 className="panel-title">{result.title}</h3>
+					</div>
   					<div className="panel-body">
-  						{result.title}  Authored by {result.author}
+  						{result.description}
   					</div>
+  					<div className="panel-footer">By {result.author}</div>
 				</div>
 			);
 		}
